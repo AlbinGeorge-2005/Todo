@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+
+{%block title_block%}
+<title>Todo {{request.user}}</title>
+{%endblock%}
+
+
+{%block main_block%}
+<h2 style="text-align: center;">{{request.user}}'s Detail</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>DESCRIPTION</th>
+            <th>STATUS</th>
+            <th>CREATED DATE</th>
+            <th>UPDATED DATE</th>
+        </tr>
+        
+        <tr>
+            <td>{{data.id}}</td>
+            <td>{{data.title}}</td>
+            <td>{{data.description}}</td>
+            <td>{{data.status}}</td>
+            <td>{{data.created_data}}</td>
+            <td>{{data.updated_date}}</td>
+        </tr>
+        
+    </table>
+
+{%endblock%}

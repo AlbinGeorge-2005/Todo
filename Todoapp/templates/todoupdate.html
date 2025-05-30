@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block title_block%}
+<title>Todo {{request.user}}</title>
+{%endblock%}
+
+
+{%block main_block%}
+
+<div class="container">
+        <div class="row">
+            <h1> Edit Details</h1>
+            <div class="col-4"></div>
+            <div class="col-4 mt-5 border border- shadow-lg">
+                <h1 style="text-align: center;">Todo Create</h1>
+
+                
+                <form action="" method="post">
+                    {%csrf_token%}
+                    {{form}} <br><br>
+                   
+                    <button class="btn btn-primary">Update</button>
+                </form>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+{%endblock%}
