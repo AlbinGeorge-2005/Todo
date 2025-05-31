@@ -4,11 +4,41 @@
 <title>Todo {{request.user}}</title>
 {%endblock%}
 
+{%block style_block%}
+ <style>
+    .btn-info:hover{
+        background-color: white;
+        color: black;
+    }
+    .btn-danger:hover{
+        background-color: white;
+        color: red;
+    }
+
+    .btn-warning:hover{
+        background-color: white;
+        color: rgb(0, 0, 0);
+    }
+    table{
+        border-color: #FFFFFF;
+        color: #FFFFFF;
+
+    }
+    th{
+        text-align: center;
+        
+    }
+    
+    .td-1{
+        text-align: center;
+    }
+ </style>
+{%endblock%}
 
 {%block main_block%}
-<h2 style="text-align: center;">Todo list of {{request.user}}</h2>
-    <table class="table table-bordered">
-        <tr>
+<h2 style="text-align: center; color: white;">Todo list of {{request.user}}</h2>
+    <table class="table table-bordered bg-dark text-white">
+        <tr class="table-success">
             <th>ID</th>
             <th>TITLE</th>
             <th>DESCRIPTION</th>
@@ -18,17 +48,17 @@
             <th>ACTION</th>
         </tr>
         {%for i in data%}
-        <tr>
-            <td>{{i.id}}</td>
+        <tr class="table-warning">
+            <td class="td-1">{{i.id}}</td>
             <td>{{i.title}}</td>
             <td>{{i.description}}</td>
             <td>{{i.status}}</td>
             <td>{{i.created_date}}</td>
             <td>{{i.updated_date}}</td>
-            <td>
-                <a href="{%url 'todo-detail' i.id%}">View</a>
-                <a href="{%url 'todo-delete' i.id%}">Remove</a>
-                <a href="{%url 'todo-edit' i.id%}">Edit</a>
+            <td class="td-1">
+                <button type="button" class="btn btn-info"><a class="nav-link" href="{%url 'todo-detail' i.id%}">View</a></button>
+                <button type="button" class="btn btn-danger"><a class="nav-link" href="{%url 'todo-delete' i.id%}">Remove</a></button>
+                <button type="button" class="btn btn-warning"><a class="nav-link" href="{%url 'todo-edit' i.id%}">Edit</a></button>
             </td>
         </tr>
         {%endfor%}

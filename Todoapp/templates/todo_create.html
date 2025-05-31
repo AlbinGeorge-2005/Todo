@@ -1,28 +1,35 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 
-{%block title_block%}
-<title>Todo {{request.user}}</title>
-{%endblock%}
+{% block title_block %}
+    <title>Todo - {{ request.user }}</title>
+{% endblock %}
 
+{% block main_block %}
+    <div  class="container py-5">
+        <div class="text-center mb-4 text-white">
+            <h1 class="fw-bold">👋 Welcome, {{ request.user }}!</h1>
+            <p class="text-white">Start organizing your day by adding tasks below</p>
+        </div>
 
-{%block main_block%}
-        <div class="container">
-                <div class="row">
-                    <h1> Hi, {{request.user}}</h1>
-                    <div class="col-4"></div>
-                    <div class="col-4 mt-5 border border- shadow-lg">
-                        <h1 style="text-align: center;">Todo Create</h1>
-
-                        
-                        <form action="" method="post">
-                            {%csrf_token%}
-                            {{form}} <br><br>
-                        
-                            <button class="btn btn-primary">Add</button>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-lg border-0">
+                    <div class="card-header bg-dark text-white text-center">
+                        <h3 class="mb-0">📝 Create a New Todo</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            {{ form }}
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-success btn-lg">
+                                    ➕ Add Task
+                                </button>
+                            </div>
                         </form>
                     </div>
-                    <div class="col-4"></div>
                 </div>
             </div>
-
-{%endblock%}
+        </div>
+    </div>
+{% endblock %}

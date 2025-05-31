@@ -27,6 +27,7 @@ class UserCreationView(View):
             messages.success(request,"Creation successful")
 
             return redirect('login')
+        
         return render(request,'sign_up.html')
 
     
